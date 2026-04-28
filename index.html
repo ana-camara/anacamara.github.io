@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ana Cámara — Social Media & Content Manager</title>
+<meta name="description" content="Portafolio de Ana Cámara, Social Media & Content Manager freelance especializada en lifestyle, gastronomía y marcas de lujo. Puebla, México.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400;1,9..144,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --cream:#FAF8F4;
+  --cream-dark:#F0EDE6;
+  --ink:#1C1917;
+  --ink-mid:#57534E;
+  --ink-muted:#A8A29E;
+  --red:#4E0000;
+  --red-light:#F5EAEA;
+  --red-mid:#E8C8C8;
+  --rule:#E4E0D8;
+  --serif:'Fraunces',serif;
+  --sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,248,244,0.94);backdrop-filter:blur(10px);border-bottom:0.5px solid var(--rule);padding:1.1rem 3rem;display:flex;justify-content:space-between;align-items:center;}
+.nav-logo{font-family:var(--serif);font-style:italic;font-weight:300;font-size:1.1rem;color:var(--ink);text-decoration:none;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-muted);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--red);}
+.nav-menu{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;}
+.nav-menu span{display:block;width:22px;height:1.5px;background:var(--ink);}
+.hero{min-height:100vh;padding-top:4.5rem;display:grid;grid-template-columns:5fr 4fr;}
+.hero-left{padding:5rem 3rem 4rem;border-right:0.5px solid var(--rule);display:flex;flex-direction:column;justify-content:space-between;}
+.hero-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:3.5rem;}
+.hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;}
+.hero-eyebrow-text{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-muted);}
+.hero-name{font-family:var(--serif);font-weight:300;font-size:clamp(4rem,8vw,8rem);line-height:0.92;letter-spacing:-0.02em;color:var(--ink);}
+.hero-name em{font-style:italic;color:var(--red);}
+.hero-bottom{padding-top:3rem;border-top:0.5px solid var(--rule);display:flex;gap:3rem;flex-wrap:wrap;}
+.hero-stat-num{font-family:var(--serif);font-style:italic;font-size:1.75rem;font-weight:300;color:var(--red);}
+.hero-stat-lbl{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-muted);margin-top:0.2rem;}
+.hero-right{padding:5rem 3rem 4rem;display:flex;flex-direction:column;gap:2rem;}
+.hero-photo{background:var(--ink);border-radius:4px;flex:1;min-height:320px;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.hero-photo-placeholder{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);}
+.hero-bio{font-size:0.95rem;line-height:1.85;color:var(--ink-mid);}
+.hero-bio strong{color:var(--ink);font-weight:500;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.hero-tag{font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--red);border:0.5px solid var(--red-mid);background:var(--red-light);padding:0.3rem 0.75rem;border-radius:20px;}
+.sec{padding:6rem 3rem;}
+.sec-header{display:flex;align-items:baseline;gap:1.5rem;margin-bottom:4rem;padding-bottom:1.25rem;border-bottom:0.5px solid var(--rule);}
+.sec-num{font-family:var(--serif);font-style:italic;font-size:0.85rem;color:var(--red);}
+.sec-title{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4vw,2.75rem);color:var(--ink);}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);}
+.svc{padding:2rem;border-right:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);}
+.svc:nth-child(3n){border-right:none;}
+.svc:nth-last-child(-n+3){border-bottom:none;}
+.svc-icon{width:24px;height:1.5px;background:var(--red);margin-bottom:1.25rem;opacity:0.6;}
+.svc-name{font-family:var(--serif);font-style:italic;font-weight:300;font-size:1.1rem;margin-bottom:0.5rem;color:var(--ink);}
+.svc-desc{font-size:0.78rem;color:var(--ink-muted);line-height:1.7;}
+.caso{display:grid;grid-template-columns:220px 1fr;gap:5rem;padding:4rem 0;border-top:0.5px solid var(--rule);opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.caso.visible{opacity:1;transform:translateY(0);}
+.caso-num{font-family:var(--serif);font-style:italic;font-size:0.8rem;color:var(--red);margin-bottom:1rem;}
+.caso-cliente{font-family:var(--serif);font-weight:300;font-size:1.6rem;line-height:1.15;color:var(--ink);margin-bottom:1.25rem;}
+.caso-badges{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem;}
+.caso-badge{display:inline-block;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--red);border:0.5px solid var(--red-mid);background:var(--red-light);padding:0.25rem 0.65rem;border-radius:20px;}
+.caso-periodo{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-muted);margin-top:1rem;}
+.caso-reto-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:0.6rem;}
+.caso-texto{font-size:0.95rem;line-height:1.85;color:var(--ink-mid);margin-bottom:2rem;}
+.caso-texto em{font-style:italic;color:var(--ink);}
+.caso-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.75rem;margin-bottom:1.75rem;}
+.stat-box{padding:1.1rem;border:0.5px solid var(--rule);border-radius:4px;}
+.stat-num{font-family:var(--serif);font-style:italic;font-weight:300;font-size:1.6rem;color:var(--red);display:block;margin-bottom:0.2rem;}
+.stat-lbl{font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-muted);}
+/* MOCKUP GRID — screenshots con fondo crema, sin recorte */
+.mockup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:0.5rem;}
+.mockup-cell{background:var(--cream-dark);border-radius:6px;padding:8px;display:flex;align-items:center;justify-content:center;aspect-ratio:9/16;}
+.mockup-cell img{width:100%;height:100%;object-fit:contain;display:block;border-radius:3px;}
+@media(max-width:600px){.mockup-grid{grid-template-columns:repeat(2,1fr);}}
+
+.caso-video{display:inline-flex;align-items:center;gap:0.6rem;margin-bottom:1.5rem;text-decoration:none;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--red);border:0.5px solid var(--red-mid);background:var(--red-light);padding:0.5rem 1rem;border-radius:20px;transition:opacity 0.2s;}
+.caso-video:hover{opacity:0.7;}
+.caso-video svg{width:14px;height:14px;flex-shrink:0;}
+
+/* ── CARRUSEL (compartido por casos y fotografía) ── */
+.carrusel-wrap{margin-top:0.5rem;}
+.carrusel{position:relative;border-radius:6px;overflow:hidden;background:var(--cream-dark);aspect-ratio:4/5;}
+.carrusel.horizontal{aspect-ratio:16/9;}
+.carrusel-track{display:flex;height:100%;transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);}
+.carrusel-slide{min-width:100%;height:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--cream-dark);}
+.carrusel-slide img{width:100%;height:100%;object-fit:cover;display:block;}
+.carrusel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:2;background:rgba(250,248,244,0.88);border:0.5px solid var(--rule);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;color:var(--ink);transition:background 0.2s;line-height:1;}
+.carrusel-btn:hover{background:var(--cream);}
+.carrusel-btn.prev{left:10px;}
+.carrusel-btn.next{right:10px;}
+.carrusel-counter{position:absolute;bottom:10px;right:12px;font-size:0.6rem;letter-spacing:0.06em;background:rgba(250,248,244,0.85);padding:3px 8px;border-radius:10px;color:var(--ink-muted);}
+.carrusel-dots{display:flex;justify-content:center;gap:6px;padding:0.6rem 0 0;}
+.carrusel-dot{width:5px;height:5px;border-radius:50%;background:var(--rule);cursor:pointer;transition:background 0.2s;border:none;}
+.carrusel-dot.active{background:var(--red);}
+
+/* Carrusel oscuro para sección Fotografía */
+.carrusel-dark .carrusel{background:rgba(255,255,255,0.05);}
+.carrusel-dark .carrusel-btn{background:rgba(28,25,23,0.75);border-color:rgba(255,255,255,0.1);color:var(--cream);}
+.carrusel-dark .carrusel-btn:hover{background:rgba(28,25,23,0.9);}
+.carrusel-dark .carrusel-counter{background:rgba(28,25,23,0.7);color:rgba(250,248,244,0.6);}
+.carrusel-dark .carrusel-dot{background:rgba(255,255,255,0.15);}
+.carrusel-dark .carrusel-dot.active{background:var(--red-mid);}
+.carrusel-dark .carrusel-slide{background:rgba(255,255,255,0.04);}
+
+.foto-sec{background:var(--ink);}
+.foto-sec .sec-num{color:var(--red-mid);}
+.foto-sec .sec-title{color:var(--cream);}
+.foto-sec .sec-header{border-color:rgba(255,255,255,0.08);}
+.foto-intro{font-size:1rem;line-height:1.85;color:rgba(250,248,244,0.5);max-width:560px;margin-bottom:2.5rem;}
+.foto-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:3rem;}
+.foto-tag{font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--red-mid);border:0.5px solid rgba(78,0,0,0.5);padding:0.3rem 0.85rem;border-radius:20px;}
+.foto-note{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--red-mid);margin-top:1.25rem;opacity:0.6;}
+.foto-proyectos{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;margin-top:1rem;}
+.foto-proyecto-titulo{font-family:var(--serif);font-style:italic;font-weight:300;font-size:1.25rem;color:var(--cream);margin-bottom:0.25rem;}
+.foto-proyecto-label{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(250,248,244,0.35);margin-bottom:1rem;}
+@media(max-width:900px){.foto-proyectos{grid-template-columns:1fr;gap:3rem;}}
+
+.sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.sobre-photo{background:var(--cream-dark);aspect-ratio:3/4;border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-muted);}
+.sobre-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.sobre-texto p{font-size:0.95rem;line-height:1.9;color:var(--ink-mid);margin-bottom:1.25rem;}
+.sobre-texto p strong{color:var(--ink);font-weight:500;}
+.sobre-texto em{font-style:italic;color:var(--red);}
+.skills-lbl{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-muted);padding-top:1.75rem;margin-top:1.75rem;border-top:0.5px solid var(--rule);margin-bottom:0.85rem;}
+.skills{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.skill{font-size:0.65rem;letter-spacing:0.06em;padding:0.3rem 0.75rem;border:0.5px solid var(--rule);color:var(--ink-mid);border-radius:20px;}
+.contacto{background:var(--red);padding:6rem 3rem;}
+.contacto-eyebrow{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(250,248,244,0.45);margin-bottom:2rem;}
+.contacto-heading{font-family:var(--serif);font-weight:300;font-size:clamp(2.5rem,5vw,4.5rem);color:var(--cream);line-height:1.05;letter-spacing:-0.02em;margin-bottom:1.5rem;}
+.contacto-heading em{font-style:italic;}
+.contacto-sub{font-size:0.95rem;line-height:1.8;color:rgba(250,248,244,0.6);max-width:480px;margin-bottom:3.5rem;}
+.contacto-links{display:flex;gap:3rem;flex-wrap:wrap;border-top:0.5px solid rgba(250,248,244,0.15);padding-top:2.5rem;}
+.c-link{text-decoration:none;}
+.c-link-lbl{font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(250,248,244,0.4);display:block;margin-bottom:0.4rem;}
+.c-link-val{font-family:var(--serif);font-style:italic;font-weight:300;font-size:1.05rem;color:var(--cream);transition:opacity 0.2s;}
+.c-link:hover .c-link-val{opacity:0.7;}
+footer{padding:1.25rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid var(--rule);}
+footer p{font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-muted);}
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .nav-menu{display:flex;}
+  .hero{grid-template-columns:1fr;}
+  .hero-left{padding:4rem 1.5rem 3rem;border-right:none;border-bottom:0.5px solid var(--rule);}
+  .hero-right{padding:3rem 1.5rem;}
+  .sec{padding:4rem 1.5rem;}
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .svc:nth-child(3n){border-right:0.5px solid var(--rule);}
+  .svc:nth-child(2n){border-right:none;}
+  .caso{grid-template-columns:1fr;gap:2rem;}
+  .sobre-grid{grid-template-columns:1fr;gap:3rem;}
+  .contacto{padding:4rem 1.5rem;}
+  footer{padding:1.25rem 1.5rem;flex-direction:column;gap:0.5rem;text-align:center;}
+}
+@media(max-width:600px){
+  .services-grid{grid-template-columns:1fr;}
+  .svc{border-right:none!important;}
+  .hero-bottom{flex-direction:column;gap:1.25rem;}
+  .caso-stats{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#top">Ana Cámara</a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#fotografia">Fotografía</a></li>
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-menu" aria-label="Menú"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="hero" id="top">
+  <div class="hero-left">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        <span class="hero-eyebrow-text">Portafolio · Social Media & Content Manager</span>
+      </div>
+      <h1 class="hero-name">Ana<br><em>Cámara</em></h1>
+    </div>
+    <div class="hero-bottom">
+      <div><p class="hero-stat-num">2.4M</p><p class="hero-stat-lbl">Visualizaciones / 90 días</p></div>
+      <div><p class="hero-stat-num">8+</p><p class="hero-stat-lbl">Años de experiencia</p></div>
+      <div><p class="hero-stat-num">$7.94</p><p class="hero-stat-lbl">Costo por lead</p></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo">
+      <!-- FOTO PORTADA: guarda como fotos/portada.jpg y descomenta la línea img -->
+      <img src="fotos/portada.jpg" alt="Ana Cámara">
+    </div>
+    <p class="hero-bio">Creo contenido que <strong>se ve bien y vende.</strong> Combino estrategia, dirección creativa y fotografía para construir marcas que generan comunidad, reconocimiento y resultados reales — sin sacrificar una por la otra.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">Lifestyle</span>
+      <span class="hero-tag">Gastronomía</span>
+      <span class="hero-tag">Diseño de autor</span>
+
+    </div>
+  </div>
+</div>
+
+<section class="sec" id="servicios">
+  <div class="sec-header fade-up">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title">¿Qué hago?</h2>
+  </div>
+  <div class="services-grid">
+    <div class="svc fade-up"><div class="svc-icon"></div><h3 class="svc-name">Estrategia digital</h3><p class="svc-desc">Planes de comunicación y marketing en redes alineados a los objetivos del negocio.</p></div>
+    <div class="svc fade-up"><div class="svc-icon"></div><h3 class="svc-name">Contenido & creatividad</h3><p class="svc-desc">Parrillas mensuales, copies y conceptos visuales coherentes con la identidad de marca.</p></div>
+    <div class="svc fade-up"><div class="svc-icon"></div><h3 class="svc-name">Fotografía</h3><p class="svc-desc">Sesiones editoriales y documentales para redes sociales y campañas digitales.</p></div>
+    <div class="svc fade-up"><div class="svc-icon"></div><h3 class="svc-name">Dirección de producción</h3><p class="svc-desc">Dirijo sesiones de foto y video cuidando encuadres, narrativa y storytelling.</p></div>
+    <div class="svc fade-up"><div class="svc-icon"></div><h3 class="svc-name">Paid media</h3><p class="svc-desc">Campañas de Meta Ads con enfoque en generación de leads y conversiones.</p></div>
+    <div class="svc fade-up"><div class="svc-icon"></div><h3 class="svc-name">Análisis & comunidad</h3><p class="svc-desc">Reportes, optimización basada en métricas y gestión de reputación digital.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="proyectos" style="padding-top:2rem;">
+  <div class="sec-header fade-up">
+    <span class="sec-num">02</span>
+    <h2 class="sec-title">Proyectos</h2>
+  </div>
+
+  <!-- CASO 001 — Hacienda Amalucan -->
+  <div class="caso">
+    <div class="caso-meta">
+      <p class="caso-num">001</p>
+      <h3 class="caso-cliente">Hacienda<br>Amalucan</h3>
+      <div class="caso-badges">
+        <span class="caso-badge">Estrategia integral</span>
+        <span class="caso-badge">Fotografía</span>
+        <span class="caso-badge">Paid media</span>
+        <span class="caso-badge">Comunnity</span>
+      </div>
+      <p class="caso-periodo">2018 — actualidad</p>
+    </div>
+    <div class="caso-content">
+      <p class="caso-reto-label">El reto</p>
+      <p class="caso-texto">Hacienda Amalucan ya tenía historia y presencia. El trabajo fue elevarla: construir una comunicación digital a la altura de su elegancia, conectar emocionalmente con quienes sueñan con celebrar ahí y generar un flujo constante de reservaciones.</p>
+      <div class="caso-stats">
+        <div class="stat-box"><span class="stat-num">2.4M</span><span class="stat-lbl">Visualizaciones / 90 días</span></div>
+        <div class="stat-box"><span class="stat-num">1,015</span><span class="stat-lbl">Leads generados / 90 días</span></div>
+        <div class="stat-box"><span class="stat-num">$7.94</span><span class="stat-lbl">Costo por lead</span></div>
+        <div class="stat-box"><span class="stat-num">2×</span><span class="stat-lbl">Récord en ventas</span></div>
+      </div>
+      <!-- LINK: reemplaza href con el link real del perfil -->
+      <a class="caso-video" href="https://www.instagram.com/reel/DUovGHEjZQx/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-width="0.8"/><polygon points="6,5 12,8 6,11" fill="currentColor"/></svg>
+        Ver reel en Instagram
+      </a>
+      <a class="caso-video" href="https://www.instagram.com/reel/DUzWKPKDWRt/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-width="0.8"/><polygon points="6,5 12,8 6,11" fill="currentColor"/></svg>
+        Ver reel en Instagram
+      </a>
+      <a class="caso-video" href="https://www.instagram.com/reel/DTjROZukYDQ/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-width="0.8"/><polygon points="6,5 12,8 6,11" fill="currentColor"/></svg>
+        Ver reel en Instagram
+      </a>
+      <!--
+        MOCKUPS DE CELULAR — Hacienda Amalucan
+        Guarda tus screenshots dentro de mockup como:
+        fotos/hacienda-1.jpg ... hacienda-5.jpg
+        Se muestran en grid de 3 columnas, cada uno con fondo crema
+        y object-fit:contain para que no se recorte ningún formato
+      -->
+      <div class="mockup-grid">
+        <div class="mockup-cell"><img src="fotos/hacienda-5.png" alt="Hacienda Amalucan"></div>
+        <div class="mockup-cell"><img src="fotos/hacienda-6.png" alt="Hacienda Amalucan"></div>
+        <div class="mockup-cell"><img src="fotos/hacienda-7.png" alt="Hacienda Amalucan"></div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CASO 002 — Banquetes Ortiz -->
+  <div class="caso">
+    <div class="caso-meta">
+      <p class="caso-num">002</p>
+      <h3 class="caso-cliente">Banquetes<br>Ortiz</h3>
+      <div class="caso-badges">
+        <span class="caso-badge">Estrategia integral</span>
+        <span class="caso-badge">Fotografía</span>
+        <span class="caso-badge">Community</span>
+        <span class="caso-badge">Paid media</span>
+      </div>
+      <p class="caso-periodo">2024 — actualidad</p>
+    </div>
+    <div class="caso-content">
+      <p class="caso-reto-label">El reto</p>
+      <p class="caso-texto">Buen producto, presencia digital que no lo reflejaba. Rediseñé la línea editorial y dirección creativa del perfil, construí una narrativa sofisticada centrada en la experiencia del evento y diseñé campañas de paid media para captar leads calificados.</p>
+      <div class="caso-stats">
+        <div class="stat-box"><span class="stat-num">+390%</span><span class="stat-lbl">Crecimiento en alcance</span></div>
+        <div class="stat-box"><span class="stat-num">10.8K</span><span class="stat-lbl">Clics en enlace</span></div>
+        <div class="stat-box"><span class="stat-num">206</span><span class="stat-lbl">Leads generados</span></div>
+        <div class="stat-box"><span class="stat-num">505K</span><span class="stat-lbl">Visualizaciones / 90 días</span></div>
+      </div>
+      <a class="caso-video" href="https://www.instagram.com/reel/DWAOZGggPLW/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-width="0.8"/><polygon points="6,5 12,8 6,11" fill="currentColor"/></svg>
+        Ver reel en Instagram
+      </a>
+      <a class="caso-video" href="https://www.instagram.com/reel/DOM0Gd6AUvM/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-width="0.8"/><polygon points="6,5 12,8 6,11" fill="currentColor"/></svg>
+        Ver reel en Instagram
+      </a>
+       </a>
+      <a class="caso-video" href="https://www.instagram.com/reel/DKiNhFwNjFd/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-width="0.8"/><polygon points="6,5 12,8 6,11" fill="currentColor"/></svg>
+        Ver reel en Instagram
+      </a>
+      <!--
+        MOCKUPS DE CELULAR — Banquetes Ortiz
+        fotos/banquetes-1.jpg ... banquetes-5.jpg
+      -->
+      <div class="mockup-grid">
+        <div class="mockup-cell"><img src="fotos/banquetes-8.png" alt="Banquetes Ortiz"></div>
+        <div class="mockup-cell"><img src="fotos/banquetes-9.png" alt="Banquetes Ortiz"></div>
+        <div class="mockup-cell"><img src="fotos/banquetes-10.png" alt="Banquetes Ortiz"></div>
+        <div class="mockup-cell"><img src="fotos/banquetes-12.png" alt="Banquetes Ortiz"></div>
+        <div class="mockup-cell"><img src="fotos/banquetes-13.png" alt="Banquetes Ortiz"></div>
+        <div class="mockup-cell"><img src="fotos/banquetes-7.png" alt="Banquetes Ortiz"></div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CASO 003 — CACAO Design -->
+  <div class="caso">
+    <div class="caso-meta">
+      <p class="caso-num">003</p>
+      <h3 class="caso-cliente">CACAO<br>Design</h3>
+      <div class="caso-badges">
+        <span class="caso-badge">Comunicación visual</span>
+        <span class="caso-badge">Community</span>
+        <span class="caso-badge">Paid media</span>
+      </div>
+      <p class="caso-periodo">2023 — 2025</p>
+    </div>
+    <div class="caso-content">
+      <p class="caso-reto-label">El reto</p>
+      <p class="caso-texto">CACAO tiene una identidad filosófica muy definida: diseño mexicano contemporáneo, slow design, oficio. Me adapté a su esencia y la traduje a redes sin diluirla. Desarrollé el concepto <em>slow design ft. low tech</em> como hilo narrativo de toda la comunicación.</p>
+      <div class="caso-stats">
+        <div class="stat-box"><span class="stat-num">↑</span><span class="stat-lbl">Valor percibido de marca</span></div>
+        <div class="stat-box"><span class="stat-num">↑</span><span class="stat-lbl">Comunidad de diseño</span></div>
+        <div class="stat-box"><span class="stat-num">✦</span><span class="stat-lbl">Identidad editorial consolidada</span></div>
+      </div>
+      <!-- Si no tienes link activo de CACAO, borra este bloque -->
+      <a class="caso-video" href="https://www.instagram.com/p/CxyQWHAO7w2/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-width="0.8"/><polygon points="6,5 12,8 6,11" fill="currentColor"/></svg>
+        Ver campaña Orgullo Mexicano
+      </a>
+      <a class="caso-video" href="https://www.instagram.com/p/C5mIgIMudxo/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-width="0.8"/><polygon points="6,5 12,8 6,11" fill="currentColor"/></svg>
+        Ver campaña CACAO al aire libre
+      </a>
+      <a class="caso-video" href="https://www.instagram.com/p/C6HoLA3vgNI/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-width="0.8"/><polygon points="6,5 12,8 6,11" fill="currentColor"/></svg>
+        Ver campaña CACAO chiquito x Totito Toto
+      </a>
+      </a>
+      <a class="caso-video" href="https://www.instagram.com/p/DBPtR2muoT4/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-width="0.8"/><polygon points="6,5 12,8 6,11" fill="currentColor"/></svg>
+        Ver campaña Tocayo
+      </a>
+      <!--
+        GRID CONTAIN — CACAO Design
+        Mantiene la proporción original de cada screenshot sin recortar
+        fotos/cacao-1.jpg ... cacao-4.jpg
+      -->
+      <div class="mockup-grid">
+        <div class="mockup-cell"><img src="fotos/cacao-1.png" alt="CACAO Design"></div>
+        <div class="mockup-cell"><img src="fotos/cacao-2.png" alt="CACAO Design"></div>
+        <div class="mockup-cell"><img src="fotos/cacao-3.png" alt="CACAO Design"></div>
+        <div class="mockup-cell"><img src="fotos/cacao-4.png" alt="CACAO Design"></div>
+        <div class="mockup-cell"><img src="fotos/cacao-5.png" alt="CACAO Design"></div>
+        <div class="mockup-cell"><img src="fotos/cacao-6.png" alt="CACAO Design"></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- FOTOGRAFÍA dividida por proyecto -->
+<section class="sec foto-sec" id="fotografia">
+  <div class="sec-header fade-up">
+    <span class="sec-num">03</span>
+    <h2 class="sec-title">Fotografía</h2>
+  </div>
+  <p class="foto-intro">El contenido que estrategio, también lo fotografío. Trabajo con luz natural, espacios reales y momentos auténticos — sin sobreproducción. El resultado es contenido visual con narrativa propia.</p>
+  <div class="foto-tags">
+    <span class="foto-tag">Contenido para redes</span>
+    <span class="foto-tag">Retrato de marca</span>
+    <span class="foto-tag">Lifestyle & espacios</span>
+    <span class="foto-tag">Documental & editorial</span>
+  </div>
+
+  <div class="foto-proyectos">
+
+    <!-- PROYECTO 1 — Casa Relámpago -->
+    <!-- Fotos: fotos/casarelampago-1.jpg ... casarelampago-5.jpg -->
+    <div>
+      <p class="foto-proyecto-titulo">Casa Relámpago</p>
+      <p class="foto-proyecto-label">Fotografía para redes sociales</p>
+      <div class="carrusel-wrap carrusel-dark">
+        <div class="carrusel" data-carrusel>
+          <div class="carrusel-track">
+            <div class="carrusel-slide"><img src="fotos/Relámpago TO1.jpg" alt="Casa Relámpago"></div>
+            <div class="carrusel-slide"><img src="fotos/Relámpago TO2.jpg" alt="Casa Relámpago"></div>
+            <div class="carrusel-slide"><img src="fotos/Relámpago TO Carmín -37.jpg" alt="Casa Relámpago"></div>
+            <div class="carrusel-slide"><img src="fotos/Relámpago TO Carmín -45.jpg" alt="Casa Relámpago"></div>
+            <div class="carrusel-slide"><img src="fotos/Relámpago TO Carmín -14.jpg" alt="Casa Relámpago"></div>
+          </div>
+          <button class="carrusel-btn prev">&#8592;</button>
+          <button class="carrusel-btn next">&#8594;</button>
+          <div class="carrusel-counter"></div>
+        </div>
+        <div class="carrusel-dots"></div>
+      </div>
+    </div>
+
+    <!-- PROYECTO 2 — Planea -->
+    <!-- Fotos: fotos/planea-1.jpg ... planea-5.jpg -->
+    <div>
+      <p class="foto-proyecto-titulo">Planea</p>
+      <p class="foto-proyecto-label">Retrato de marca</p>
+      <div class="carrusel-wrap carrusel-dark">
+        <div class="carrusel" data-carrusel>
+          <div class="carrusel-track">
+            <div class="carrusel-slide"><img src="fotos/foto-1.jpg" alt="Planea"></div>
+            <div class="carrusel-slide"><img src="fotos/Planea-1-11.jpg" alt="Planea"></div>
+            <div class="carrusel-slide"><img src="fotos/Planea-1-15.jpg" alt="Planea"></div>
+            <div class="carrusel-slide"><img src="fotos/Planea-1-5.jpg" alt="Planea"></div>
+            <div class="carrusel-slide"><img src="fotos/Planea-1-7.jpg" alt="Planea"></div>
+          </div>
+          <button class="carrusel-btn prev">&#8592;</button>
+          <button class="carrusel-btn next">&#8594;</button>
+          <div class="carrusel-counter"></div>
+        </div>
+        <div class="carrusel-dots"></div>
+      </div>
+    </div>
+
+    <!-- PROYECTO 3 — ANPR Encuentro Parques 2025 -->
+    <!-- Fotos: fotos/anpr-1.jpg ... anpr-5.jpg -->
+    <div>
+      <p class="foto-proyecto-titulo">ANPR Encuentro Parques 2025</p>
+      <p class="foto-proyecto-label">Fotografía documental</p>
+      <div class="carrusel-wrap carrusel-dark">
+        <div class="carrusel" data-carrusel>
+          <div class="carrusel-track">
+            <div class="carrusel-slide"><img src="fotos/ANPR-EncuentroParques-1.jpg" alt="ANPR Encuentro Parques 2025"></div>
+            <div class="carrusel-slide"><img src="fotos/ANPR-EncuentroParques-10.jpg" alt="ANPR Encuentro Parques 2025"></div>
+            <div class="carrusel-slide"><img src="fotos/ANPR-EncuentroParques-12.jpg" alt="ANPR Encuentro Parques 2025"></div>
+            <div class="carrusel-slide"><img src="fotos/ANPR-EncuentroParques-16.jpg" alt="ANPR Encuentro Parques 2025"></div>
+            <div class="carrusel-slide"><img src="fotos/ANPR-EncuentroParques-18.jpg" alt="ANPR Encuentro Parques 2025"></div>
+            <div class="carrusel-slide"><img src="fotos/ANPR-EncuentroParques-6.jpg" alt="ANPR Encuentro Parques 2025"></div>
+          </div>
+          <button class="carrusel-btn prev">&#8592;</button>
+          <button class="carrusel-btn next">&#8594;</button>
+          <div class="carrusel-counter"></div>
+        </div>
+        <div class="carrusel-dots"></div>
+      </div>
+    </div>
+
+  </div>
+  <p class="foto-note" style="margin-top:3rem;">Ana Cámara · Fotografía documental y editorial</p>
+</section>
+
+<section class="sec" id="sobre-mi">
+  <div class="sec-header fade-up">
+    <span class="sec-num">04</span>
+    <h2 class="sec-title">Sobre mí</h2>
+  </div>
+  <div class="sobre-grid">
+    <!-- FOTO SOBRE MÍ: guarda como fotos/sobre-mi.jpg -->
+    <div class="sobre-photo fade-up">
+      <img src="fotos/sobre-mi.jpg" alt="Ana Cámara">
+    </div>
+    <div class="sobre-texto fade-up">
+      <p>Soy Ana Cámara, Social Media & Content Manager freelance basada en <strong>Puebla</strong>, con clientes en otras ciudades de México.</p>
+      <p>Llegué aquí por una combinación de formación y muchos años haciendo — aprendiendo en campo, equivocándome y refinando la forma en que entiendo las marcas y las personas detrás de ellas.</p>
+      <p>Me quedo con los proyectos que tienen historia y propósito, con los clientes que confían en el proceso y con la libertad de crear algo que realmente valga la pena. Cuando esas tres cosas coinciden, el trabajo se nota.</p>
+      <p>Combino estrategia digital, dirección creativa y fotografía porque creo que las mejores marcas no separan el <em>qué decir</em> del <em>cómo verse.</em></p>
+      <p class="skills-lbl">Herramientas & plataformas</p>
+      <div class="skills">
+        <span class="skill">Meta Business Suite</span>
+        <span class="skill">Meta Ads</span>
+        <span class="skill">Instagram</span>
+        <span class="skill">TikTok</span>
+        <span class="skill">Illustrator</span>
+        <span class="skill">Lightroom</span>
+        <span class="skill">Edits</span>
+        <span class="skill">Notion</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <p class="contacto-eyebrow">Trabajemos juntos</p>
+  <h2 class="contacto-heading">¿Tu marca tiene<br>algo que <em>decir?</em></h2>
+  <p class="contacto-sub">Ya sea un proyecto puntual o una colaboración a largo plazo — empezamos con una conversación sin compromiso para ver si somos un buen match.</p>
+  <div class="contacto-links">
+    <a class="c-link" href="mailto:anacamara.some@gmail.com"><span class="c-link-lbl">E-mail</span><span class="c-link-val">anacamara.some@gmail.com</span></a>
+    <a class="c-link" href="https://wa.me/522227655265" target="_blank" rel="noopener"><span class="c-link-lbl">WhatsApp</span><span class="c-link-val">+52 222 765 5265</span></a>
+    <a class="c-link" href="https://instagram.com/ana_camara" target="_blank" rel="noopener"><span class="c-link-lbl">Instagram</span><span class="c-link-val">@ana_camara</span></a>
+  </div>
+</section>
+
+<footer>
+  <p>Ana Cámara — Social Media & Content Manager</p>
+  <p>Puebla, México · 2026</p>
+</footer>
+
+<script>
+// Scroll animations
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.1});
+document.querySelectorAll('.fade-up, .caso').forEach(el => obs.observe(el));
+
+// Mobile menu
+const menuBtn = document.querySelector('.nav-menu');
+const navLinks = document.querySelector('.nav-links');
+menuBtn.addEventListener('click', () => {
+  const open = navLinks.style.display === 'flex';
+  navLinks.style.cssText = open ? 'display:none' : 'display:flex;flex-direction:column;position:fixed;top:56px;left:0;right:0;background:var(--cream);padding:1.5rem;border-bottom:0.5px solid var(--rule);gap:1.25rem;z-index:99;';
+});
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => { navLinks.style.display = 'none'; });
+});
+
+// Carruseles (funciona para todos: casos y fotografía)
+document.querySelectorAll('[data-carrusel]').forEach(carrusel => {
+  const wrap = carrusel.closest('.carrusel-wrap');
+  const track = carrusel.querySelector('.carrusel-track');
+  const slides = Array.from(track.querySelectorAll('.carrusel-slide'));
+  const counter = carrusel.querySelector('.carrusel-counter');
+  const dotsWrap = wrap.querySelector('.carrusel-dots');
+  const total = slides.length;
+  let cur = 0;
+
+  // Crear dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'carrusel-dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => go(i));
+    dotsWrap.appendChild(d);
+  });
+
+  function go(n) {
+    cur = ((n % total) + total) % total;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    counter.textContent = `${cur + 1} / ${total}`;
+    dotsWrap.querySelectorAll('.carrusel-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+  }
+
+  carrusel.querySelector('.prev').addEventListener('click', () => go(cur - 1));
+  carrusel.querySelector('.next').addEventListener('click', () => go(cur + 1));
+
+  // Swipe táctil
+  let sx = 0;
+  track.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive: true});
+  track.addEventListener('touchend', e => {
+    const dx = sx - e.changedTouches[0].clientX;
+    if (Math.abs(dx) > 40) go(cur + (dx > 0 ? 1 : -1));
+  });
+
+  go(0);
+});
+</script>
+</body>
+</html>
